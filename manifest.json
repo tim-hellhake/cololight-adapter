@@ -1,0 +1,53 @@
+{
+  "manifest_version": 1,
+  "id": "cololight-adapter",
+  "name": "Cololight",
+  "short_name": "Cololight",
+  "version": "0.1.0",
+  "description": "Connect your Cololight devices",
+  "homepage_url": "https://github.com/tim-hellhake/cololight-adapter#readme",
+  "license": "MPL-2.0",
+  "author": "Tim Hellhake",
+  "gateway_specific_settings": {
+    "webthings": {
+      "exec": "{nodeLoader} {path}",
+      "strict_min_version": "0.10.0",
+      "strict_max_version": "*",
+      "primary_type": "adapter"
+    }
+  },
+  "options": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "cololights": {
+          "type": "array",
+          "title": "List of cololights",
+          "items": {
+            "type": "object",
+            "title": "A cololight",
+            "required": [
+              "address",
+              "port"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "The ID of the cololight (will be generated for you)",
+                "readOnly": true
+              },
+              "address": {
+                "type": "string",
+                "title": "The address"
+              },
+              "port": {
+                "type": "integer",
+                "title": "The port of the cololight (default 8900)"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
